@@ -1,0 +1,26 @@
+#!/bin/zsh
+# Compile and run the program and output the result to a log file.
+
+FILE="$1";
+# Check if file exists
+if [ ! -f "$FILE" ]; then
+		echo "File $FILE does not exist.";
+		exit 1;
+fi
+
+BASE="$(basename $FILE)";
+FILENAME="${BASE%.*}"; # Without extension
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )";
+LOG_FILE="$SCRIPT_DIR/logs/$FILENAME.log";
+
+# Make output folders if they don't exist
+mkdir -p "$SCRIPT_DIR/logs/";
+mkdir -p "$SCRIPT_DIR/build/";
+
+# Compile the program
+g++ -std=c++17 -o "dist/$FILENAME.out" "$FILE";
+
+# Run and time the program
+date +"%D %I:%M %p" >> $LOG_FILE
+"dist/$FILENAME.out" | tee -a $LOG_FILE
+echo "" >> $LOG_FILE
