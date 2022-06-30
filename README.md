@@ -16,3 +16,6 @@ scripts/run src/$FILE_NAME.cpp
 scripts/clear-logs
 
 ```
+
+- [Blind 75](https://neetcode.io/)
+
