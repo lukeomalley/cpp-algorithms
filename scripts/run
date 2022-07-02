@@ -15,7 +15,7 @@ LOG_FILE="$SCRIPT_DIR/logs/$FILENAME.log";
 
 # Make output folders if they don't exist
 mkdir -p "$SCRIPT_DIR/logs/";
-mkdir -p "$SCRIPT_DIR/build/";
+mkdir -p "$SCRIPT_DIR/dist/";
 
 # Compile the program
 g++ -std=c++17 -o "dist/$FILENAME.out" "$FILE";
