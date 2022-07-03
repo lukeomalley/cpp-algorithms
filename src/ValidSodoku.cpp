@@ -31,16 +31,14 @@ public:
 
         int curr = board[i][j] - '0';
 
-        std::cout << curr << std::endl;
-
         if (rows[i].count(curr) || cols[j].count(curr) ||
-            blocks[(i / 3) * 3 + j / 3].count(curr)) {
+            blocks[(i / 3) * 3 + (j / 3)].count(curr)) {
           return false;
         }
 
         rows[i].insert(curr);
         cols[j].insert(curr);
-        blocks[(i / 3) * 3 + j / 3].insert(curr);
+        blocks[(i / 3) * 3 + (j / 3)].insert(curr);
       }
     }
 
@@ -48,4 +46,23 @@ public:
   }
 };
 
-int main() { return 0; }
+int main() {
+  std::vector<std::vector<char>> board = {
+      {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+      {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+      {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+      {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+      {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+      {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+      {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+      {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+      {'.', '.', '.', '.', '8', '.', '.', '7', '9'}};
+
+  Solution solution;
+
+  bool isValid = solution.isValidSudoku(board);
+
+  std::cout << "Board is valid: " << isValid << std::endl;
+
+  return 0;
+}
