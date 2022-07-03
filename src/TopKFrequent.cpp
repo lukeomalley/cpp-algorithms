@@ -6,7 +6,7 @@
 // Given an integer array nums and an integer k, return the k most frequent
 // elements. You may return the answer in any order.
 class Solution {
-public:
+ public:
   std::vector<int> topKFrequent(std::vector<int> &nums, int k) {
     std::unordered_map<int, int> counts = {};
     std::vector<int> result;
