@@ -16,11 +16,11 @@ LOG_FILE="$SCRIPT_DIR/logs/$FILENAME.log";
 # Make output folders if they don't exist
 mkdir -p "$SCRIPT_DIR/logs/";
 mkdir -p "$SCRIPT_DIR/dist/";
-
+ 
 # Compile the program
-g++ -std=c++17 -o "dist/$FILENAME.out" "$FILE";
+g++ -std=c++17 "$FILE" -o "dist/$FILENAME.o"
 
 # Run and time the program
 date +"%D %I:%M %p" >> $LOG_FILE
-"dist/$FILENAME.out" | tee -a $LOG_FILE
+"dist/$FILENAME.o" | tee -a $LOG_FILE
 echo "" >> $LOG_FILE
